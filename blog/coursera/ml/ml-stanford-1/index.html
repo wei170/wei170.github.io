@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Week 1 - Machine Learning - Guocheng&#39;s Space</title>
+<meta name="description" content="Notes of Week 1 Machine Learning Coursera Course by Stanford University">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+  <meta name="generator" content="Hugo 0.55.6" />
+  
+<meta itemprop="name" content="Week 1 - Machine Learning">
+<meta itemprop="description" content="Notes of Week 1 Machine Learning Coursera Course by Stanford University">
+
+
+<meta itemprop="datePublished" content="2019-06-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="568">
+
+
+
+<meta itemprop="keywords" content="Machine Learning," />
+
+  <meta property="og:title" content="Week 1 - Machine Learning" />
+<meta property="og:description" content="Notes of Week 1 Machine Learning Coursera Course by Stanford University" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wei170.github.io/blog/coursera/ml/ml-stanford-1/" />
+<meta property="article:published_time" content="2019-06-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-06-27T00:00:00&#43;00:00"/>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week 1 - Machine Learning"/>
+<meta name="twitter:description" content="Notes of Week 1 Machine Learning Coursera Course by Stanford University"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="/css/main.min.css">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+    
+      <link rel="stylesheet" href="/css/main.css">
+    
+  
+    
+      <link rel="stylesheet" href="/css/mathjax-style.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+      
+        <a href="/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+      
+        <a href="/blog/" class="link"><i class="far fa-newspaper">&nbsp;</i>Blog</a>
+      
+        <a href="/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Categories</a>
+      
+        <a href="/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="active"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+  
+    
+      
+    
+      
+        <a href="/cn" lang="cn" class="no-lang"><span class="flag-icon flag-icon-cn" alt="cn"></span></a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Week%201%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;title=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;title=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;description=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" class="share-btn email">
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/avatar.jpg" class="circle" width="80" alt="avatar" /></a>
+  <header>
+    <h1>Guocheng Wei</h1>
+  </header>
+  <main>
+    <p>I will share my side projects, paper readings, trending news, and my life here with you.</p>
+  </main>
+  
+    <footer>
+      <ul class="social-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/coursera/ml/ml-stanford-1/">Week 1 - Machine Learning</a></h2>
+    
+    
+        <p>Notes of Week 1 Machine Learning Coursera Course by Stanford University</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-06-27 00:00:00 &#43;0000 UTC">
+      June 27, 2019
+    </time>
+    <span class="author">Guocheng Wei</span>
+    
+        <p>3 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="social-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Week%201%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;title=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;title=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f&amp;description=Week%201%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-1%2f" target="_blank" class="share-btn email">
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+<a href="/blog/coursera/ml/ml-stanford-1/" class="image featured">
+  <img src="/img/2019/06/ml_stanford_1.png" alt="ml stanford thumbnail">
+</a>
+
+
+  <div class="content">
+    
+
+<hr />
+
+<h3 id="the-hypothesis-function">The Hypothesis Function</h3>
+
+<p>$$\hat{y} = h_\theta(x) = \theta_0 + \theta_1 x$$</p>
+
+<hr />
+
+<h3 id="cost-function">Cost Function</h3>
+
+<p>To measure the accuracy of the hypothesis function. This takes an average (actually a fancier version of an average) of all the results of the hypothesis with inputs from x&rsquo;s compared to the actual output y&rsquo;s.</p>
+
+<p>$$J(\theta_0, \theta_1) = \dfrac{1}{2m} \displaystyle \sum _{i=1}^m  \left( \hat{y}_i- y_i \right)^2 = \dfrac{1}{2m} \displaystyle \sum _{i=1}^m \left (h _\theta(x_i) - y_i \right)^2$$</p>
+
+<p>Break it apart:</p>
+
+<blockquote>
+<p>$h_\theta (x_i) - y_i$ is the difference between the predicted value and the actual value.</p>
+
+<p>$\bar{x}$ is the mean of all $\left (h_\theta (x_i) - y_i \right)^2$</p>
+
+<p>$J(\theta_0, \theta_1) = \frac{1}{2}\bar{x} $</p>
+</blockquote>
+
+<p>The function is also called <strong>Square Error Function</strong>, or <strong>Mean squared error</strong></p>
+
+<p>The mean is halfed as a convenience for the computation of <strong>the gradient descent</strong>, as the derivative of the square function will cancel out the $\frac{1}{2}$ term</p>
+
+<h4 id="intuition-ⅰ">Intuition Ⅰ</h4>
+
+<p>To simplify the visualization of the cost function, assume $\theta_0$ is 0, which means the cost function is $J(\theta_1)$</p>
+
+<p><img src="/img/2019/06/intuition_1.png" alt="Intuition of theta to find the minimal cost function" /></p>
+
+<h4 id="intuition-ⅱ">Intuition Ⅱ</h4>
+
+<p>If the $\theta_0$ is not 0, then the <strong>contour plot</strong> will look like this:</p>
+
+<p><img src="/img/2019/06/contour_plot_3d.png" alt="3D Contour Plot" /></p>
+
+<p>If projected onto a 2d plot</p>
+
+<p><img src="/img/2019/06/contour_plot_2d.png" alt="2D Contour Plot" /></p>
+
+<p>Key features:</p>
+
+<ul>
+<li>Every point on the same &lsquo;circle&rsquo; has the same $J(\theta_0, \theta_1)$</li>
+<li>The center of the inner most &lsquo;circle&rsquo; is the minimal cost function value.</li>
+</ul>
+
+<hr />
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<p>To find a local minimum of a function using gradient descent, one takes steps proportional to the negative of the gradient (or approximate gradient) of the function at the current point.</p>
+
+<p><img src="/img/2019/06/gradient_descent_example.png" alt="Example of Gradient Descent" /></p>
+
+<p>The way we do this is by taking the derivative (the tangential line to a function) of our cost function. The slope of the tangent is the derivative at that point and it will give us a direction to move towards. We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter α, which is called the <strong>learning rate</strong>.</p>
+
+<p>As shown above, two points are next to each other, but their local minimal cost function value are different.</p>
+
+<p>The gradient descent algorithm is:</p>
+
+<blockquote>
+<p>repear until convergence:
+$$\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)$$
+where $j = 0,1$ represents the feature index number</p>
+</blockquote>
+
+<p>At each iteration j, one should simultaneously update the parameters $\theta_0, \theta_1, \theta_2, &hellip;$. (<strong>Simultaneous Update</strong>)</p>
+
+<h4 id="intuition-ⅰ-1">Intuition Ⅰ</h4>
+
+<p>Simplied gradient descent with $\theta_0$ is 0:</p>
+
+<blockquote>
+<p>repear until convergence:
+$$\theta_1 := \theta_1 - \alpha \frac{\partial}{\partial \theta_1} J(\theta_1)$$</p>
+</blockquote>
+
+<p><strong>When the slope is negative, the value of $\theta_1$ ​increases.</strong></p>
+
+<p><strong>When it is positive, the value of $\theta_1$ decreases.</strong></p>
+
+<p><img src="/img/2019/06/gradient_descent_intuition_slope.png" alt="How slope affects the movement of theta" /></p>
+
+<h4 id="intuition-ⅱ-1">Intuition Ⅱ</h4>
+
+<p>We should adjust our parameter $\alpha$ to ensure that the gradient descent algorithm converges in a reasonable time.</p>
+
+<p>Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.</p>
+
+<p><img src="/img/2019/06/gradient_descent_intuition_step.png" alt="Step size affects the convergence" /></p>
+
+<h4 id="intuition-ⅲ">Intuition Ⅲ</h4>
+
+<p><strong>Gradient descent can converge to a local minimum, even with the learning rate is fixed.</strong></p>
+
+<p>When approaching the local minimum, slope value is smaller, and so the step size is smaller.</p>
+
+<hr />
+
+<h3 id="gradient-descent-for-linear-regression">Gradient Descent For Linear Regression</h3>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0.278em 2em 0.278em 2em 0.278em 2em 0.278em 2em 0.278em 2em 0.278em" displaystyle="true" minlabelspacing=".8em">
+    <mtr>
+      <mtd>
+        <mtext>repeat until convergence:&#xA0;</mtext>
+        <mo fence="false" stretchy="false">{</mo>
+      </mtd>
+      <mtd />
+    </mtr>
+    <mtr>
+      <mtd>
+        <msub>
+          <mi>&#x03B8;<!-- θ --></mi>
+          <mn>0</mn>
+        </msub>
+        <mo>:=</mo>
+      </mtd>
+      <mtd>
+        <msub>
+          <mi>&#x03B8;<!-- θ --></mi>
+          <mn>0</mn>
+        </msub>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03B1;<!-- α --></mi>
+        <mfrac>
+          <mn>1</mn>
+          <mi>m</mi>
+        </mfrac>
+        <munderover>
+          <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>m</mi>
+          </mrow>
+        </munderover>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>h</mi>
+          <mi>&#x03B8;<!-- θ --></mi>
+        </msub>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo stretchy="false">)</mo>
+        <mo>&#x2212;<!-- − --></mo>
+        <msub>
+          <mi>y</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo stretchy="false">)</mo>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <msub>
+          <mi>&#x03B8;<!-- θ --></mi>
+          <mn>1</mn>
+        </msub>
+        <mo>:=</mo>
+      </mtd>
+      <mtd>
+        <msub>
+          <mi>&#x03B8;<!-- θ --></mi>
+          <mn>1</mn>
+        </msub>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03B1;<!-- α --></mi>
+        <mfrac>
+          <mn>1</mn>
+          <mi>m</mi>
+        </mfrac>
+        <munderover>
+          <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>m</mi>
+          </mrow>
+        </munderover>
+        <mfenced open="(" close=")">
+          <mrow>
+            <mo stretchy="false">(</mo>
+            <msub>
+              <mi>h</mi>
+              <mi>&#x03B8;<!-- θ --></mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <msub>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>&#x2212;<!-- − --></mo>
+            <msub>
+              <mi>y</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <msub>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+          </mrow>
+        </mfenced>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo fence="false" stretchy="false">}</mo>
+      </mtd>
+      <mtd />
+    </mtr>
+  </mtable>
+</math>
+
+<p><strong>Batch gradient descent</strong>: looks at every example in the entire training set on every step</p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+  
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "guocheng-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+</article>
+<div class="pagination">
+  
+    <a href="/blog/cellular-drone-development/" class="button big previous"><i class="fas fa-angle-left"></i> Overview of The Cellular Drone Development</a>
+  
+  
+    <a href="/blog/coursera/ml/ml-stanford-2/" class="button big next">Week 2 - Machine Learning <i class="fas fa-angle-right"></i></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  <section id="recent-posts">
+    <header>
+      <h1>Recent posts</h1>
+    </header>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-2/" class="image featured">
+  <img src="/img/2019/06/ml_stanford_2.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-2/">Week 2 - Machine Learning</a></h1>
+        <time class="published" datetime="">June 28, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-1/" class="image featured">
+  <img src="/img/2019/06/ml_stanford_1.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-1/">Week 1 - Machine Learning</a></h1>
+        <time class="published" datetime="">June 27, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/cellular-drone-development/" class="image featured">
+  <img src="/img/2019/06/cellular_drone_dev_thumnail_0.png" alt="cellular drone development thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/cellular-drone-development/">Overview of The Cellular Drone Development</a></h1>
+        <time class="published" datetime="">June 24, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/cellular-drone/" class="image featured">
+  <img src="/img/2019/05/release_drone.jpg" alt="Release Drone">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/cellular-drone/">Cellular Drone</a></h1>
+        <time class="published" datetime="">May 31, 2019</time>
+      </header>
+    </article>
+    
+    
+  </section>
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/coursera-notes/">coursera-notes<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/project-overview/">project-overview<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/project-report/">project-report<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  <section id="mini-bio">
+    <header>
+      <h1>About</h1>
+    </header>
+    <p>Passion in core network, ML, and software engineer. Love food, hiking, and snow skiing.</p>
+    <footer>
+      <a href="/about" class="button">Learn More</a>
+    </footer>
+  </section>
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="social-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019
+      
+        Guocheng&#39;s Space
+      
+    .
+    Powered by <a href="//gohugo.io" target="_blank" rel="noopener">Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92477600-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>
