@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Guocheng&#39;s Space</title>
+    <link>https://wei170.github.io/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Guocheng&#39;s Space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wei170.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Week 1 - Machine Learning</title>
+      <link>https://wei170.github.io/blog/ml-stanford-1/</link>
+      <pubDate>Thu, 27 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wei170.github.io/blog/ml-stanford-1/</guid>
+      <description>The Hypothesis Function $$\hat{y} = h_\theta(x) = \theta_0 + \theta_1 x$$
+Cost Function To measure the accuracy of the hypothesis function. This takes an average (actually a fancier version of an average) of all the results of the hypothesis with inputs from x&amp;rsquo;s compared to the actual output y&amp;rsquo;s.
+$$J(\theta_0, \theta_1) = \dfrac{1}{2m} \displaystyle \sum _{i=1}^m \left( \hat{y}_i- y_i \right)^2 = \dfrac{1}{2m} \displaystyle \sum _{i=1}^m \left (h _\theta(x_i) - y_i \right)^2$$</description>
+    </item>
+    
+  </channel>
+</rss>
