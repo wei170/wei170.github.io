@@ -6,10 +6,21 @@
     <description>Recent content in Blog on Guocheng&#39;s Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wei170.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 4 - Machine Learning</title>
+      <link>https://wei170.github.io/blog/coursera/ml/ml-stanford-4/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wei170.github.io/blog/coursera/ml/ml-stanford-4/</guid>
+      <description>Non-linear Hypotheses If create a hypothesis with r polynominal terms from $n$ features, then there will be $\frac{(n+r-1)!}{r!(n-1)!}$. For quadratic terms, the time complexity is $O(n^{2}/2)$. Not pratical to compute.
+Neural networks offers an alternate way to perform machine learning when we have complex hypotheses with many features.
+Neurons and the Brain There is evidence that the brain uses only one &amp;ldquo;learning algorithm&amp;rdquo; for all its different functions. Scientists have tried cutting (in an animal brain) the connection between the ears and the auditory cortex and rewiring the optical nerve with the auditory cortex to find that the auditory cortex literally learns to see.</description>
+    </item>
     
     <item>
       <title>Week 3 - Machine Learning</title>

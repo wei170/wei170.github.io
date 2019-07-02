@@ -29,7 +29,7 @@
 
 <meta itemprop="datePublished" content="2019-06-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1450">
+<meta itemprop="wordCount" content="1496">
 
 
 
@@ -251,7 +251,7 @@
     </time>
     <span class="author">Guocheng Wei</span>
     
-        <p>7 minute read</p>
+        <p>8 minute read</p>
     
   </div>
 </header>
@@ -349,6 +349,22 @@ h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \\
 P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1
 $$</p>
 
+<p>Simplied probability function:</p>
+
+<p>$$
+P(y|x) = h_\theta(x)^{y} (1 - h_\theta(x))^{1-y}
+$$</p>
+
+<p>So in order to decease the cost:</p>
+
+<p>$$
+\begin{align}
+\uparrow \log(P(y|x)) &amp; = \log(h_\theta(x)^{y} (1 - h_\theta(x))^{1-y}) \newline
+&amp; = y \log(h_\theta(x)) + (1-y) \log(1 - h_\theta(x)) \newline
+&amp; = - J(\theta) \downarrow
+\end{align}
+$$</p>
+
 <hr />
 
 <h3 id="decision-boundary">Decision Boundary</h3>
@@ -441,7 +457,7 @@ $$</p>
 <p>A <strong>vectorized implementation</strong> is:</p>
 
 <p>$$
-\theta := \theta - \frac{\sigma}{m} X^T (g(X\theta) - \vec{y})
+\theta := \theta - \frac{\alpha}{m} X^T (g(X\theta) - \vec{y})
 $$</p>
 
 <h4 id="partial-derivative-of-j-θ">Partial derivative of J(θ)</h4>
@@ -674,6 +690,8 @@ $$</p>
     <a href="/blog/coursera/ml/ml-stanford-2/" class="button big previous"><i class="fas fa-angle-left"></i> Week 2 - Machine Learning</a>
   
   
+    <a href="/blog/coursera/ml/ml-stanford-4/" class="button big next">Week 4 - Machine Learning <i class="fas fa-angle-right"></i></a>
+  
 </div>
 
 
@@ -683,6 +701,21 @@ $$</p>
     <header>
       <h1>Recent posts</h1>
     </header>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-4/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 1, 2019</time>
+      </header>
+    </article>
     
     <article class="mini-post">
       <section>
@@ -744,21 +777,6 @@ $$</p>
       </header>
     </article>
     
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/cellular-drone/" class="image featured">
-  <img src="/img/2019/05/release_drone.jpg" alt="Release Drone">
-</a>
-
-
-      </section>
-      <header>
-        <h1><a href="/blog/cellular-drone/">Cellular Drone</a></h1>
-        <time class="published" datetime="">May 31, 2019</time>
-      </header>
-    </article>
-    
     
       <a href="/blog/" class="button">See more</a>
     
@@ -777,7 +795,7 @@ $$</p>
           
           <li>
             
-              <a href="/categories/coursera-notes/">coursera-notes<span class="count">3</span></a>
+              <a href="/categories/coursera-notes/">coursera-notes<span class="count">4</span></a>
             
           
           <li>
