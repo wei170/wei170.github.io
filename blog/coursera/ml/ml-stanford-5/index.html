@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Week 2 - Machine Learning - Guocheng&#39;s Space</title>
-<meta name="description" content="Multivariate Linear Regression, Normal Equation, Octave Tutorial">
+<title>Week 5 - Machine Learning - Guocheng&#39;s Space</title>
+<meta name="description" content="Neural Network Cost Function, Backpropagation Algorithm, Unrolling Parameters, Gradient Checking, Random Initialization">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -23,28 +23,28 @@
 </script>
   <meta name="generator" content="Hugo 0.55.6" />
   
-<meta itemprop="name" content="Week 2 - Machine Learning">
-<meta itemprop="description" content="Multivariate Linear Regression, Normal Equation, Octave Tutorial">
+<meta itemprop="name" content="Week 5 - Machine Learning">
+<meta itemprop="description" content="Neural Network Cost Function, Backpropagation Algorithm, Unrolling Parameters, Gradient Checking, Random Initialization">
 
 
-<meta itemprop="datePublished" content="2019-06-28T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-06-28T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="528">
+<meta itemprop="datePublished" content="2019-07-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="826">
 
 
 
 <meta itemprop="keywords" content="Machine Learning," />
 
-  <meta property="og:title" content="Week 2 - Machine Learning" />
-<meta property="og:description" content="Multivariate Linear Regression, Normal Equation, Octave Tutorial" />
+  <meta property="og:title" content="Week 5 - Machine Learning" />
+<meta property="og:description" content="Neural Network Cost Function, Backpropagation Algorithm, Unrolling Parameters, Gradient Checking, Random Initialization" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://wei170.github.io/blog/coursera/ml/ml-stanford-2/" />
-<meta property="article:published_time" content="2019-06-28T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-06-28T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://wei170.github.io/blog/coursera/ml/ml-stanford-5/" />
+<meta property="article:published_time" content="2019-07-03T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-03T00:00:00&#43;00:00"/>
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Week 2 - Machine Learning"/>
-<meta name="twitter:description" content="Multivariate Linear Regression, Normal Equation, Octave Tutorial"/>
+<meta name="twitter:title" content="Week 5 - Machine Learning"/>
+<meta name="twitter:description" content="Neural Network Cost Function, Backpropagation Algorithm, Unrolling Parameters, Gradient Checking, Random Initialization"/>
 
   
 
@@ -138,25 +138,25 @@
 
   
     
-    <a href="//twitter.com/share?text=Week%202%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Week%205%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" rel="noopener" class="share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" rel="noopener" class="share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;title=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;title=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;title=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;title=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
@@ -164,13 +164,13 @@
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;description=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;description=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" class="share-btn email">
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" class="share-btn email">
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -243,19 +243,19 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/coursera/ml/ml-stanford-2/">Week 2 - Machine Learning</a></h2>
+        <h2><a href="/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h2>
     
     
-        <p>Multivariate Linear Regression, Normal Equation, Octave Tutorial</p>
+        <p>Neural Network Cost Function, Backpropagation Algorithm, Unrolling Parameters, Gradient Checking, Random Initialization</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-06-28 00:00:00 &#43;0000 UTC">
-      June 28, 2019
+    <time class="published" datetime="2019-07-03 00:00:00 &#43;0000 UTC">
+      July 3, 2019
     </time>
     <span class="author">Guocheng Wei</span>
     
-        <p>3 minute read</p>
+        <p>4 minute read</p>
     
   </div>
 </header>
@@ -268,25 +268,25 @@
 
   
     
-    <a href="//twitter.com/share?text=Week%202%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Week%205%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" rel="noopener" class="share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" rel="noopener" class="share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;title=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;title=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;title=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;title=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
@@ -294,13 +294,13 @@
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f&amp;description=Week%202%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f&amp;description=Week%205%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-2%2f" target="_blank" class="share-btn email">
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-5%2f" target="_blank" class="share-btn email">
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -308,134 +308,196 @@
 
   </section>
   
-<a href="/blog/coursera/ml/ml-stanford-2/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_2.png" alt="ml stanford thumbnail">
+<a href="/blog/coursera/ml/ml-stanford-5/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
 </a>
 
 
   <div class="content">
     
 
-<hr />
-
-<h3 id="mutiple-features">Mutiple Features</h3>
-
-<p>Linear regression with multiple variables is also known as <strong>multivariate linear regression</strong>.</p>
-
-<p>The notation for equations:</p>
-
-<p>$$ x_j^{(i)} = \text{value of feature } j \text{ in the }i^{th}\text{ training example} $$</p>
-
-<p>$$ x^{(i)} = \text{the input (features) of the }i^{th}\text{ training example} $$</p>
-
-<p>$$ m = \text{the number of training examples} $$</p>
-
-<p>$$ n = \text{the number of features} $$</p>
-
-<p>The multivariable form of the hypothesis function:</p>
-
-<p>$$ h_\theta (x) = \theta_0 x_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n $$</p>
-
-<p>Assume $$ x_{0}^{(i)} =1 \text{ for } (i\in { 1,\dots, m } )$$</p>
-
-<p>Then, multivariable hypothesis function can be concisely represented as:</p>
-
-<p>$$ h_\theta(x) =\begin{bmatrix}\theta_0 \hspace{2em} \theta_1 \hspace{2em} &hellip; \hspace{2em} \theta_n\end{bmatrix}\begin{bmatrix}x_0 \newline x_1 \newline \vdots \newline x_n\end{bmatrix}= \theta^T x $$</p>
+<h1 id="neural-network">Neural Network</h1>
 
 <hr />
 
-<h3 id="gradient-descent-for-multiple-variables">Gradient Descent for Multiple Variables</h3>
+<h3 id="cost-function">Cost Function</h3>
 
-<p>Repeat until convergence: {
-$$\theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \qquad \text{for j := 0&hellip;n}$$
-}</p>
+<div style="font-size: 70%;">
+\begin{gather*}
+  \large J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2
+\end{gather*}
+</div>
 
-<hr />
-
-<h3 id="feature-scaling-and-mean-normalization">Feature Scaling and Mean Normalization</h3>
-
-<p>We can speed up gradient descent by having each of our input values in roughly the same range. This is because $\theta$ will descend quickly on small ranges and slowly on large ranges, and so will oscillate inefficiently down to the optimum when the variables are very uneven.</p>
-
-<p><strong>Feature scaling</strong> involves dividing the input values by the range (i.e. the maximum value minus the minimum value or the standard deviation) of the input variable, resulting in a new range of just 1.</p>
-
-<p><strong>Mean normalization</strong> involves subtracting the average value for an input variable from the values for that input variable resulting in a new average value for the input variable of just zero.</p>
-
-<p>So:</p>
-
-<p>$$x_{i} := \frac{x_{i} - \mu_{i}}{s_{i}}$$</p>
-
-<p>$\mu_{i}$ is the average of all values for feature $(i)$
-$s_{i}$ is  the range of values (max - min), is the standard deviation.</p>
-
-<hr />
-
-<h3 id="debugging-gradient-descent-by-learning-rate">Debugging Gradient Descent by Learning Rate</h3>
-
-<p>Make a plot with number of iterations on the x-axis. Now plot the cost function, $J(\theta)$ over the number of iterations of gradient descent. If $J(\theta)$ ever increases, then you probably need to decrease $\alpha$.</p>
-
-<p><img src="/img/2019/06/check_learning_rate.png" alt="plot with # of iterations" /></p>
-
-<p><strong>If $\alpha$ is too small: slow convergence.</strong> <br />
-<strong>If $\alpha$ is too large: ￼may not decrease on every iteration and thus may not converge.</strong></p>
-
-<hr />
-
-<h3 id="polynominal-regression">Polynominal Regression</h3>
-
-<p>We can <strong>change the behavior or curve</strong> of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).</p>
-
-<hr />
-
-<h3 id="normal-equation">Normal Equation</h3>
-
-<p>$$\theta = (X^TX)^{-1}X^Ty$$</p>
-
-<p>A method of finding the optimum theta <strong>without iteration</strong>. <br />
-<strong>No need</strong> to do feature scaling with the normal equation.</p>
-
-<p><a href="http://eli.thegreenplace.net/2014/derivation-of-the-normal-equation-for-linear-regression">Proof of the normal equation</a></p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Gradient Descent</th>
-<th align="center">Normal Equation</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">Need to choose alpha</td>
-<td align="center">No need to choose alpha</td>
-</tr>
-
-<tr>
-<td align="center">Needs many iterations</td>
-<td align="center">No need to iterate</td>
-</tr>
-
-<tr>
-<td align="center">$O(kn^2)$</td>
-<td align="center">$O(n^3)$ need to calculate $(X^TX)^{-1}$</td>
-</tr>
-
-<tr>
-<td align="center">Works well when n is large</td>
-<td align="center">Slow if n is very large</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="noninvertability">Noninvertability</h4>
-
-<p>If $X^TX$ is <strong>noninvertible</strong>, the common causes might be having :</p>
+<p>Some notations:</p>
 
 <ul>
-<li><strong>Redundant features</strong>, where two features are very closely related (i.e. they are linearly dependent) <br /></li>
-<li><strong>Too many features</strong> (e.g. m ≤ n). In this case, delete some features or use &ldquo;regularization&rdquo; (to be explained in a later lesson).</li>
+<li>L = total number of layers in the network</li>
+<li>$s_l$ = number of units (not counting bias unit) in layer l</li>
+<li>K = number of output units/classes</li>
 </ul>
 
-<p>When implementing the normal equation in octave we want to use the <strong>&lsquo;pinv&rsquo;</strong> function rather than &lsquo;inv.&rsquo;</p>
+<p>Note:</p>
+
+<ul>
+<li>The double sum simply adds up the logistic regression costs calculated for each cell <strong>in the output layer</strong></li>
+<li>The triple sum simply adds up the squares of all the individual Θs in the entire network.</li>
+<li>The i in the triple sum does <strong>not</strong> refer to training example i</li>
+</ul>
+
+<hr />
+
+<h3 id="backpropagation-algorithm">Backpropagation Algorithm</h3>
+
+<p>Our goal is to compute:</p>
+
+<p>$\min_\Theta J(\Theta)$</p>
+
+<p>In this section we&rsquo;ll look at the equations we use to compute the partial derivative of J(Θ):</p>
+
+<p>$\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta)$</p>
+
+<p>In back propagation we&rsquo;re going to compute for every node:</p>
+
+<p>$\delta_j^{(l)} = \text{&ldquo;error&rdquo; of node j in layer l}$</p>
+
+<p>$a_j^{(l)} = \text{activation node j in layer l}$</p>
+
+<p>For the <strong>last layer</strong>, we can compute the vector of delta values with:</p>
+
+<p>$\delta^{L} = a^{L} - y$</p>
+
+<p>To get the delta values of the layers before the last layer, we can use an equation that steps us back from right to left:</p>
+
+<p>$$
+\begin{align}
+  &amp; \because &amp;\delta^{(l)} &amp;= ((\Theta^{(l)})^T \delta^{(l+1)})\ .*\ g&rsquo;(z^{(l)}) \newline
+  &amp; &amp; g&rsquo;(u) &amp;= g(u) .* \ ((1− g(u))) \newline \newline
+  &amp; \therefore &amp;\delta^{(l)} &amp;= ((\Theta^{(l)})^T \delta^{(l+1)})\ .* \ a^{(l)}\ .* \ (1 - a^{(l)})
+\end{align}
+$$</p>
+
+<p>We can compute our partial derivative terms by multiplying our activation values and our error values for each training example t:</p>
+
+<p>$$
+\begin{align}
+  \dfrac{\partial J(\Theta)}{\partial \Theta_{i,j}^{(l)}} = \frac{1}{m}\sum_{t=1}^m a_j^{(t)(l)} {\delta}_i^{(t)(l+1)}
+\end{align}
+$$</p>
+
+<p><strong>Note</strong>: This ignores regularization, which we&rsquo;ll deal with later.</p>
+
+<h4 id="algorithm">Algorithm</h4>
+
+<p>Given training set $\lbrace (x^{(1)}, y^{(1)}) \cdots (x^{(m)}, y^{(m)})\rbrace$</p>
+
+<ol>
+<li><p>Set $\Delta^{(l)}_{i,j} := 0 \text{ for all (l)}$</p></li>
+
+<li><p>For training example t = 1 to m, Set $a^{(1)} := x^{(i)}$</p></li>
+
+<li><p>Perform forward propagation to compute $a^{(l)} \text{ for all l = 2, 3, &hellip;, l}$</p></li>
+
+<li><p>$\delta^{L} = a^{L} - y$</p></li>
+
+<li><p>Compute $\delta^{(L - 1)},\ \delta^{(L - 2)},\ &hellip;, \delta^{(2)}$ using $\delta^{(l)} = ((\Theta^{(l)})^T \delta^{(l+1)})\ .*\ a^{(l)}\ .*\ (1 - a^{(l)})$</p></li>
+
+<li><p>$\Delta^{(l)}_{i,j} := \Delta^{(l)}_{i,j} + a^{(l)}_{j} \ \delta^{(l+1)}_{i}$ or with vectorization, $\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)} \ (a^{(l)})^T$</p></li>
+
+<li><p>$D^{(l)}_{i,j} := \dfrac{1}{m}\left(\Delta^{(l)}_{i,j} + \lambda\Theta^{(l)}_{i,j}\right) \text{ if } j \neq 0$</p></li>
+
+<li><p>$D^{(l)}_{i,j} := \dfrac{1}{m}\Delta^{(l)}_{i,j} \text{ if } j = 0$</p></li>
+</ol>
+
+<hr />
+
+<h3 id="unrolling-parameters">Unrolling Parameters</h3>
+
+<p>In order to use optimizing functions such as &ldquo;fminunc()&rdquo;, we will want to &ldquo;unroll&rdquo; all the elements and put them into one long vector:</p>
+
+<pre><code>thetaVector = [ Theta1(:); Theta2(:); Theta3(:); ]
+deltaVector = [ D1(:); D2(:); D3(:) ]
+</code></pre>
+
+<p>If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11, then we can get back our original matrices from the &ldquo;unrolled&rdquo; versions as follows:</p>
+
+<pre><code>Theta1 = reshape(thetaVector(1:110),10,11)
+Theta2 = reshape(thetaVector(111:220),10,11)
+Theta3 = reshape(thetaVector(221:231),1,11)
+</code></pre>
+
+<hr />
+
+<h3 id="gradient-checking">Gradient Checking</h3>
+
+<p>Gradient checking will assure that our backpropagation works as intended.</p>
+
+<p>$$
+\begin{align}
+  \dfrac{\partial}{\partial\Theta}J(\Theta) \approx \dfrac{J(\Theta + \epsilon) - J(\Theta - \epsilon)}{2\epsilon}
+\end{align}
+$$</p>
+
+<p>With multiple theta matrices, we can approximate the derivative <strong>with respect to $\Theta_j$</strong>as follows:</p>
+
+<p>$$
+\begin{align}
+  \dfrac{\partial}{\partial\Theta_j}J(\Theta) \approx \dfrac{J(\Theta_1, \dots, \Theta_j + \epsilon, \dots, \Theta_n) - J(\Theta_1, \dots, \Theta_j - \epsilon, \dots, \Theta_n)}{2\epsilon}
+\end{align}
+$$</p>
+
+<p>The professor Andrew usually uses the value $\epsilon = 10^{-4}$</p>
+
+<pre><code>epsilon = 1e-4;
+for i = 1:n,
+  thetaPlus = theta;
+  thetaPlus(i) += epsilon;
+  thetaMinus = theta;
+  thetaMinus(i) -= epsilon;
+  gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*epsilon)
+end;
+</code></pre>
+
+<p><strong>Note</strong>: Once you&rsquo;ve verified once that your backpropagation algorithm is correct, then you don&rsquo;t need to compute gradApprox again. The code to compute gradApprox is very slow.</p>
+
+<hr />
+
+<h3 id="randomization">Randomization</h3>
+
+<p>Initializing all theta weights to zero does not work with neural networks. When we backpropagate, all nodes will update to the same value repeatedly.</p>
+
+<p>Instead we can randomly initialize our weights between $[-\epsilon, \epsilon]$:</p>
+
+<pre><code>% If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.
+% rand(x,y) will initialize a matrix of random real numbers between 0 and 1
+
+Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+</code></pre>
+
+<hr />
+
+<h3 id="putting-it-together">Putting it together</h3>
+
+<p>First, pick a network architecture; choose the layout of your neural network, including how many hidden units in each layer and how many layers total.</p>
+
+<ul>
+<li>Number of input units = dimension of features $x^{(i)}$</li>
+<li>Number of output units = number of classes</li>
+<li>Number of hidden units per layer = usually more the better (must balance with cost of computation as it increases with more hidden units)</li>
+<li>Defaults: 1 hidden layer. If more than 1 hidden layer, then the same number of units in every hidden layer.</li>
+</ul>
+
+<p><strong>Training a Neural Network</strong></p>
+
+<ol>
+<li>Randomly initialize the weights</li>
+<li>Implement forward propagation to get $h_\theta(x^{(i)})$</li>
+<li>Implement the cost function</li>
+<li>Implement backpropagation to compute partial derivatives</li>
+<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking.</li>
+<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta.</li>
+</ol>
 
   </div>
   <footer>
@@ -499,10 +561,8 @@ $s_{i}$ is  the range of values (max - min), is the standard deviation.</p>
 </article>
 <div class="pagination">
   
-    <a href="/blog/coursera/ml/ml-stanford-1/" class="button big previous"><i class="fas fa-angle-left"></i> Week 1 - Machine Learning</a>
+    <a href="/blog/coursera/ml/ml-stanford-4/" class="button big previous"><i class="fas fa-angle-left"></i> Week 4 - Machine Learning</a>
   
-  
-    <a href="/blog/coursera/ml/ml-stanford-3/" class="button big next">Week 3 - Machine Learning <i class="fas fa-angle-right"></i></a>
   
 </div>
 
