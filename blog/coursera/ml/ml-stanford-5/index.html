@@ -16,11 +16,26 @@
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
+      processEscapes: true,
+      TEX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
+     }
     },
     "HTML-CSS": { fonts: ["TeX"] }
   });
 </script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
   <meta name="generator" content="Hugo 0.55.6" />
   
 <meta itemprop="name" content="Week 5 - Machine Learning">
@@ -29,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2019-07-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="826">
+<meta itemprop="wordCount" content="827">
 
 
 
@@ -64,10 +79,6 @@
   
     
       <link rel="stylesheet" href="/css/main.css">
-    
-  
-    
-      <link rel="stylesheet" href="/css/mathjax-style.css">
     
   
     
@@ -322,11 +333,11 @@
 
 <h3 id="cost-function">Cost Function</h3>
 
-<div style="font-size: 70%;">
-\begin{gather*}
-  \large J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2
-\end{gather*}
-</div>
+<p>$$
+\begin{gather}
+  J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2
+\end{gather}
+$$</p>
 
 <p>Some notations:</p>
 
@@ -564,6 +575,8 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
     <a href="/blog/coursera/ml/ml-stanford-4/" class="button big previous"><i class="fas fa-angle-left"></i> Week 4 - Machine Learning</a>
   
   
+    <a href="/blog/coursera/ml/ml-stanford-6/" class="button big next">Week 6 - Machine Learning <i class="fas fa-angle-right"></i></a>
+  
 </div>
 
 
@@ -573,6 +586,32 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
     <header>
       <h1>Recent posts</h1>
     </header>
+    
+    <article class="mini-post">
+      <section>
+        
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
+        <time class="published" datetime="">July 7, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 6, 2019</time>
+      </header>
+    </article>
     
     <article class="mini-post">
       <section>
@@ -619,36 +658,6 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
       </header>
     </article>
     
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-2/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_2.png" alt="ml stanford thumbnail">
-</a>
-
-
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-2/">Week 2 - Machine Learning</a></h1>
-        <time class="published" datetime="">June 28, 2019</time>
-      </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-1/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_1.png" alt="ml stanford thumbnail">
-</a>
-
-
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-1/">Week 1 - Machine Learning</a></h1>
-        <time class="published" datetime="">June 27, 2019</time>
-      </header>
-    </article>
-    
     
       <a href="/blog/" class="button">See more</a>
     
@@ -667,7 +676,7 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
           
           <li>
             
-              <a href="/categories/coursera-notes/">coursera-notes<span class="count">5</span></a>
+              <a href="/categories/coursera-notes/">coursera-notes<span class="count">7</span></a>
             
           
           <li>

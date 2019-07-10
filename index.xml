@@ -6,10 +6,32 @@
     <description>Recent content on Guocheng&#39;s Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wei170.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Additional Note for Improving Deep Neural Network</title>
+      <link>https://wei170.github.io/blog/coursera/ml/improve-dnn/</link>
+      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wei170.github.io/blog/coursera/ml/improve-dnn/</guid>
+      <description>Practical aspects of Deep Learning Regularization What we learn in Week 3 is L2 Regularization.
+L1 Regularization is without the square of the $\theta$.
+Implementation tip: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases monotonically after every elevation of gradient descent with regularization.</description>
+    </item>
+    
+    <item>
+      <title>Week 6 - Machine Learning</title>
+      <link>https://wei170.github.io/blog/coursera/ml/ml-stanford-6/</link>
+      <pubDate>Sat, 06 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wei170.github.io/blog/coursera/ml/ml-stanford-6/</guid>
+      <description>Deciding What to Try Next Errors in your predictions can be troubleshooted by:
+ Getting more training examples Trying smaller sets of features Trying additional features Trying polynomial features Increasing or decreasing $\lambda$  Model Selection and Train/Validation/Test Sets Test Error $$ J_{test}(\Theta) = \dfrac{1}{2m_{test}} \sum_{i=1}^{m_{test}}(h_\Theta(x^{(i)}_{test}) - y^{(i)}_{test})^2 $$
+ Just because a learning algorithm fits a training set well, that does not mean it is a good hypothesis. The error of your hypothesis as measured on the data set with which you trained the parameters will be lower than any other data set.</description>
+    </item>
     
     <item>
       <title>Week 5 - Machine Learning</title>
@@ -17,7 +39,8 @@
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://wei170.github.io/blog/coursera/ml/ml-stanford-5/</guid>
-      <description>Neural Network Cost Function \begin{gather*} \large J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2 \end{gather*}  Some notations:
+      <description>Neural Network Cost Function $$ \begin{gather} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2 \end{gather} $$
+Some notations:
  L = total number of layers in the network $s_l$ = number of units (not counting bias unit) in layer l K = number of output units/classes  Note:
  The double sum simply adds up the logistic regression costs calculated for each cell in the output layer The triple sum simply adds up the squares of all the individual Θs in the entire network.</description>
     </item>

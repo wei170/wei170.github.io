@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Additional Note for Improving Deep Neural Network - Guocheng&#39;s Space</title>
+<meta name="description" content="I am Guocheng Wei, passionate in core network, ML, and software engineer. I&#39;ll share my side projects, paper readings, trending news, and my life here with you.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      TEX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
+     }
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  
+<meta itemprop="name" content="Additional Note for Improving Deep Neural Network">
+<meta itemprop="description" content="Practical aspects of Deep Learning Regularization What we learn in Week 3 is L2 Regularization.
+L1 Regularization is without the square of the $\theta$.
+Implementation tip: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases monotonically after every elevation of gradient descent with regularization.">
+
+
+<meta itemprop="datePublished" content="2019-07-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2202">
+
+
+
+<meta itemprop="keywords" content="Machine Learning," />
+
+  <meta property="og:title" content="Additional Note for Improving Deep Neural Network" />
+<meta property="og:description" content="Practical aspects of Deep Learning Regularization What we learn in Week 3 is L2 Regularization.
+L1 Regularization is without the square of the $\theta$.
+Implementation tip: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases monotonically after every elevation of gradient descent with regularization." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wei170.github.io/blog/coursera/ml/improve-dnn/" />
+<meta property="article:published_time" content="2019-07-07T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-07T00:00:00&#43;00:00"/>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Additional Note for Improving Deep Neural Network"/>
+<meta name="twitter:description" content="Practical aspects of Deep Learning Regularization What we learn in Week 3 is L2 Regularization.
+L1 Regularization is without the square of the $\theta$.
+Implementation tip: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases monotonically after every elevation of gradient descent with regularization."/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="/css/main.min.css">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+    
+      <link rel="stylesheet" href="/css/main.css">
+    
+  
+    
+      <link rel="stylesheet" href="/css/code_snippet.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+      
+        <a href="/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+      
+        <a href="/blog/" class="link"><i class="far fa-newspaper">&nbsp;</i>Blog</a>
+      
+        <a href="/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Categories</a>
+      
+        <a href="/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="active"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+  
+    
+      
+    
+      
+        <a href="/cn" lang="cn" class="no-lang"><span class="flag-icon flag-icon-cn" alt="cn"></span></a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;title=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;title=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;description=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email">
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/avatar.jpg" class="circle" width="80" alt="avatar" /></a>
+  <header>
+    <h1>Guocheng Wei</h1>
+  </header>
+  <main>
+    <p>I will share my side projects, paper readings, trending news, and my life here with you.</p>
+  </main>
+  
+    <footer>
+      <ul class="social-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h2>
+    
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-07-07 00:00:00 &#43;0000 UTC">
+      July 7, 2019
+    </time>
+    <span class="author">Guocheng Wei</span>
+    
+        <p>11 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="social-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;title=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;title=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f&amp;description=Additional%20Note%20for%20Improving%20Deep%20Neural%20Network" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email">
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+
+  <div class="content">
+    
+
+<h1 id="practical-aspects-of-deep-learning">Practical aspects of Deep Learning</h1>
+
+<hr />
+
+<h3 id="regularization">Regularization</h3>
+
+<p>What we learn in <a href="/blog/coursera/ml/ml-stanford-3/#regularization">Week 3</a> is <strong>L2 Regularization</strong>.</p>
+
+<p><strong>L1 Regularization</strong> is without the square of the $\theta$.</p>
+
+<p><strong><em>Implementation tip</em></strong>: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases <strong>monotonically</strong> after every elevation of gradient descent with regularization. If you plot the old definition of J (no regularization) then you might not see it decrease monotonically.</p>
+
+<hr />
+
+<h3 id="dropout-regularization">Dropout Regularization</h3>
+
+<p>For reducing overfitting</p>
+
+<p><img src="/img/2019/07/dropout.jpg" alt="Dropout" /></p>
+
+<p>Implementing Dropout (illustrate with l = 3, and keep-prob = 0.8):</p>
+
+<pre><code class="language-python">d3 = np.random.rand(a3.shape[0], a3.shape[1]) &lt; keep-prob
+a3 = np.multiple(a3, d3)
+a3 /= keep-prob
+</code></pre>
+
+<p>One big downside of drop out is that the cost function <strong>J is no longer well-defined</strong>. J is not going downhill on very iteration.</p>
+
+<blockquote>
+<p>Many of the first successful implementations of drop outs were to computer vision. So in computer vision, the input size is so big, inputting all these pixels that you almost never have enough data. And so drop out is very frequently used by computer vision</p>
+</blockquote>
+
+<p><strong>Note</strong>: Dropout doesn&rsquo;t work with gradient checking because J is not consistent. You can first turn off dropout (set keep_prob = 1.0), run gradient checking and then turn on dropout again.</p>
+
+<hr />
+
+<h3 id="other-regularization-methods">Other regularization methods</h3>
+
+<ul>
+<li>Data augmentation
+
+<ul>
+<li>For example in a computer vision data:
+
+<ul>
+<li>You can flip all your pictures horizontally this will give you m more data instances.</li>
+<li>You could also apply a random position and rotation to an image to get more data.</li>
+</ul></li>
+<li>For example in OCR, you can impose random rotations and distortions to digits/letters.</li>
+<li>New data obtained using this technique isn&rsquo;t as good as the real independent data, but still can be used as a regularization technique.</li>
+</ul></li>
+<li>Early stopping
+
+<ul>
+<li>In this technique we plot the training set and the dev set cost together for each iteration. At some iteration the dev set cost will stop decreasing and will start increasing.</li>
+<li>We will pick the point at which the training set error and dev set error are best (lowest training cost with lowest dev cost).</li>
+<li>We will take these parameters as the best parameters.</li>
+</ul></li>
+</ul>
+
+<p><img src="/img/2019/07/early_stoppping.png" alt="Early Stopping" /></p>
+
+<hr />
+
+<h3 id="vanishing-exploding-gradient">Vanishing / Exploding Gradient</h3>
+
+<p>The level number of deep learning network layers can be large. So if the Ws are just a little bit bigger than one or just a little bit bigger than the identity matrix, then with a very deep network the activations can explode. (i.e. W .^ 100)</p>
+
+<p>And if W is just a little bit less than identity. The activations will decrease exponentially</p>
+
+<hr />
+
+<h3 id="weight-initialization">Weight Initialization</h3>
+
+<p>A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights</p>
+
+<p>So, we need the variance which equals $\frac{1}{n_x}$ to be the range of W&rsquo;s</p>
+
+<p>Here are three ways to weight initailize $W$:</p>
+
+<ol>
+<li>For $tanh$ activation:
+<code>np.random.rand(shape) * np.sqrt(1/n[l-1])</code></li>
+<li>For ReLU:
+<code>np.random.rand(shape) * np.sqrt(2/n[l-1])</code></li>
+<li>Xavier Initialization:
+<code>np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))</code></li>
+</ol>
+
+<hr />
+
+<h3 id="gradient-checking">Gradient checking</h3>
+
+<p>$$
+\begin{align}
+  \dfrac{\partial}{\partial\Theta}J(\Theta) \approx \dfrac{J(\Theta + \epsilon) - J(\Theta - \epsilon)}{2\epsilon}
+\end{align}
+$$</p>
+
+<p>$$ difference = \frac {\mid\mid grad - gradapprox \mid\mid_2}{\mid\mid grad \mid\mid_2 + \mid\mid gradapprox \mid\mid_2}$$
+with $\epsilon = 10^{-7}$ (|| - Euclidean vector norm):</p>
+
+<ul>
+<li>if it is $&lt; 10^{-7}$ - great, very likely the backpropagation implementation is correct</li>
+<li>if around $10^{-5}$ - can be OK, but need to inspect if there are no particularly big values in $gradapprox - grad$</li>
+<li>if it is $\geq 10^{-3}$ - bad, probably there is a bug in backpropagation implementation</li>
+</ul>
+
+<hr style="height: 10px; background-color:grey; opcaity: 0.25;"/>
+
+<h1 id="optimization-algorithms">Optimization Algorithms</h1>
+
+<hr />
+
+<h3 id="mini-batch-gradient-descent">Mini-batch Gradient Descent</h3>
+
+<p>In <strong>Batch gradient descent</strong> we run the gradient descent on the whole dataset.</p>
+
+<p>While in <strong>Mini-Batch gradient</strong> descent we run the gradient descent on the mini datasets.</p>
+
+<p>Training NN with a large data is slow. So we break the data set into mini batches for both $X$ and $Y$ ==&gt; $t: X^{\{t\}}, Y^{\{t\}}$</p>
+
+<p>Pseudo code:</p>
+
+<pre><code>for t = 1:num_of_batches                         # this is called an epoch
+	AL, caches = forward_prop(X{t}, Y{t})
+	cost = compute_cost(AL, Y{t})
+	grads = backward_prop(AL, caches)
+	update_parameters(grads)
+</code></pre>
+
+<p><img src="/img/2019/07/mini-batch_gradient_descent.png" alt="mini-batch gradient descent" /></p>
+
+<h4 id="mini-batch-size">Mini-batch size:</h4>
+
+<ul>
+<li>(mini batch size = m) ==&gt; Batch gradient descent
+
+<ol>
+<li>Too long per iteration (epoch)</li>
+</ol></li>
+<li>(mini batch size = 1) ==&gt; <strong>Stochastic gradient descent (SGD)</strong>
+
+<ol>
+<li>Too noisy regarding cost minimization (can be reduced by using smaller learning rate)</li>
+<li>Don&rsquo;t ever converge (oscelates a lot around the minimum cost)</li>
+<li><strong>Lose speedup from vectorization</strong></li>
+</ol></li>
+<li>(mini batch size = between 1 and m) ==&gt; Mini-batch gradient descent
+
+<ol>
+<li>Faster learning:
+
+<ul>
+<li>Have the vectorization advantage</li>
+<li>make progress without waiting to process the entire training set</li>
+</ul></li>
+<li>Doesn&rsquo;t always exactly converge (oscelates in a very small region, but you can reduce learning rate)</li>
+</ol></li>
+</ul>
+
+<h4 id="guidelines-for-choosing-mini-batch-size">Guidelines for choosing mini-batch size</h4>
+
+<ol>
+<li>If small training set (&lt; 2000 examples) - use batch gradient descent.</li>
+<li>It has to be a power of 2 (because of the way computer memory is layed out and accessed, sometimes your code runs faster if your mini-batch size is a power of 2): 64, 128, 256, 512, 1024, &hellip;</li>
+<li>Make sure that mini-batch fits in CPU/GPU memory.</li>
+<li>Mini-batch size is a hyperparameter.</li>
+</ol>
+
+<hr />
+
+<h3 id="exponentially-weighted-averages">Exponentially Weighted Averages</h3>
+
+<p>There are optimization algorithms that are better than gradient descent, but you should first learn about Exponentially weighted averages.</p>
+
+<p>$V_t$ is the weighted average for entry t, and $\theta_t$ is the value for entry t
+$$
+V_t = \beta V_{t-1} + (1 - \beta) \theta_t
+$$</p>
+
+<p>If we plot this it will represent averages over $\frac{1}{1 - \beta}$ entries:</p>
+
+<ul>
+<li>$\beta = 0.9$ will average last 10 entries</li>
+<li>$\beta = 0.98$ will average last 50 entries</li>
+<li>$\beta = 0.5$ will average last 2 entries</li>
+</ul>
+
+<p>Intuition:</p>
+
+<ul>
+<li>Increase $\beta$, the shift the curve slightly to the right.</li>
+<li>Decreasing $\beta$ will create more oscillation within the curve.</li>
+</ul>
+
+<p><img src="/img/2019/07/exponentially_weighted_average.png" alt="exponentially weighted average" /></p>
+
+<h4 id="bias-correction-in-exponentially-weighted-averages">Bias correction in exponentially weighted averages</h4>
+
+<p>When $V_0 = 0$, the bias of the weighted averages is shifted and the accuracy suffers at the start</p>
+
+<p>$$
+V_t = \frac{\beta V_{t-1} + (1 - \beta) \theta_t}{ 1 - \beta^t }
+$$</p>
+
+<p><strong>Note</strong>: As t becomes larger the $1 - \beta^t$ becomes close to 1</p>
+
+<hr />
+
+<h3 id="gradient-descent-with-momentum">Gradient Descent with Momentum</h3>
+
+<p>The simple idea is to calculate the exponentially weighted averages for your gradients and then update your weights with the new values.</p>
+
+<p>$$
+\begin{align}
+    &amp;v_{dW^{[l]}} = \beta v_{dW^{[l]}} + (1 - \beta) dW^{[l]} \newline
+    &amp;W^{[l]} = W^{[l]} - \alpha v_{dW^{[l]}}
+\end{align}
+$$</p>
+
+<p>Momentum helps the cost function to go to the minimum point in a more fast and consistent way.</p>
+
+<p><strong>Note</strong>: $\beta$ is another hyperparameter. $\beta = 0.9$ is very common and works very well in most cases.</p>
+
+<hr />
+
+<h3 id="rmsprop">RMSprop</h3>
+
+<p>Stands for <strong>Root mean square prop</strong>.</p>
+
+<p>RMSprop will make the cost function move <strong>slower on the vertical direction</strong> and <strong>faster on the horizontal direction</strong></p>
+
+<p>$$
+\begin{align}
+    &amp; s_{dW^{[l]}} = \beta_2 s_{dW^{[l]}} + (1 - \beta_2) (\frac{\partial J }{\partial dW^{[l]} })^2 \newline
+    &amp; W^{[l]} = W^{[l]} - \alpha \frac{dW^{[l]}}{\sqrt{s_{dW^{[l]}}} + \epsilon}
+\end{align}
+$$</p>
+
+<p><strong>Notes</strong>:</p>
+
+<ol>
+<li>Name the beta $\beta_2$ is to differentiate the beta in momentum</li>
+<li>$\epsilon$ is used to ensure denominator is not zero</li>
+</ol>
+
+<p><img src="/img/2019/07/rmsprop.png" alt="Rmsprop" /></p>
+
+<hr />
+
+<h3 id="adam">Adam</h3>
+
+<p>Stands for <strong>Adaptive Moment Estimation</strong></p>
+
+<p>Simply puts RMSprop and momentum together:</p>
+
+<p>$$
+\begin{align}
+    &amp; v_{W^{[l]}} = \beta_1 v_{W^{[l]}} + (1 - \beta_1) \frac{\partial J }{ \partial W^{[l]} } \newline
+    &amp; v^{corrected}_{W^{[l]}} = \frac{v_{W^{[l]}}}{1 - (\beta_1)^t} \newline
+    &amp; s_{W^{[l]}} = \beta_2 s_{W^{[l]}} + (1 - \beta_2) (\frac{\partial J }{\partial W^{[l]} })^2 \newline
+    &amp; s^{corrected}_{W^{[l]}} = \frac{s_{W^{[l]}}}{1 - (\beta_2)^t} \newline
+    &amp; W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{W^{[l]}}}{\sqrt{s^{corrected}_{W^{[l]}}}+\varepsilon}
+\end{align}
+$$</p>
+
+<p>Hyperparameters for Adam:</p>
+
+<ol>
+<li>Learning rate: needed to be tuned.</li>
+<li>$\beta_1$: parameter of the momentum - 0.9 is recommended by default.</li>
+<li>$\beta_2$: parameter of the RMSprop - 0.999 is recommended by default.</li>
+<li>$\epsilon$: $10^{-8}$ is recommended by default.</li>
+</ol>
+
+<hr />
+
+<h3 id="learning-rate-decay">Learning rate decay</h3>
+
+<p>As mentioned before mini-batch gradient descent won&rsquo;t reach the optimum point (converge). But by making the learning rate decay with iterations it will be much closer to it because the steps (and possible oscillations) near the optimum are smaller.</p>
+
+<p>Three learning rate decay methods:</p>
+
+<p>$$
+\begin{align}
+    &amp; \alpha = \frac{1}{1 + \text{decay_rate} * \text{epoch_num}} * \alpha_0 \newline
+    \newline
+    &amp; \alpha = (0.95 ^ {\text{epoch_num}}) * \alpha_0 \newline
+    \newline
+    &amp; \alpha = \frac{k}{\sqrt{\text{epoch_num}}} * \alpha_0
+\end{align}
+$$</p>
+
+<hr />
+
+<h3 id="the-problem-of-local-optima">The problem of local optima</h3>
+
+<ol>
+<li><strong>The normal local optima is not likely to appear in a dnn</strong> because data is usually high dimensional. For point to be a local optima it has to be a local optima for each of the dimensions which is highly unlikely.</li>
+<li>It&rsquo;s unlikely to get stuck in a bad local optima in high dimensions, it is much <strong>more likely to get to the saddle point</strong> rather to the local optima, which is not a problem.</li>
+<li><strong>Plateaus can make learning slow</strong>:
+
+<ul>
+<li>Plateau is a region where the derivative is close to zero for a long time.</li>
+<li>This is where algorithms like momentum, RMSprop or Adam can help.</li>
+</ul></li>
+</ol>
+
+<hr style="height: 10px; background-color:grey; opcaity: 0.25;"/>
+
+<h1 id="hyperparameter-tuning-batch-normalization-and-programming-frameworks">Hyperparameter tuning, Batch Normalization and Programming Frameworks</h1>
+
+<hr />
+
+<h3 id="tuning-process">Tuning Process</h3>
+
+<p>Hyperparameters are:</p>
+
+<ol>
+<li>Learning rate.</li>
+<li>Momentum beta.</li>
+<li>Mini-batch size.</li>
+<li>No. of hidden units.</li>
+<li>No. of layers.</li>
+<li>Learning rate decay.</li>
+<li>Regularization lambda.</li>
+<li>Activation functions.</li>
+<li>Adam beta1 &amp; beta2.</li>
+</ol>
+
+<p>Its hard to decide which hyperparameter is the most important in a problem. It depends a lot on your problem.</p>
+
+<p>One of the ways to tune is to sample a grid with N hyperparameter settings and then try all settings combinations on your problem.</p>
+
+<p><strong>Try random values: don&rsquo;t use a grid.</strong> You can use Coarse to fine sampling scheme:</p>
+
+<p>When you find some hyperparameters values that give you a better performance - zoom into a smaller region around these values and sample more densely within this space.</p>
+
+<p>These methods can be automated.</p>
+
+<hr />
+
+<h3 id="appropriate-scale">Appropriate Scale</h3>
+
+<p>Let&rsquo;s say you have a specific range for a hyperparameter from &ldquo;a&rdquo; to &ldquo;b&rdquo; It&rsquo;s better to search for the right ones using the logarithmic scale rather then in linear scale:</p>
+
+<ul>
+<li>Calculate: <code>a_log = log(a) # e.g. a = 0.0001 then a_log = -4</code></li>
+<li>Calculate: <code>b_log = log(b) # e.g. b = 1 then b_log = 0</code></li>
+
+<li><p>Then:</p>
+
+<pre><code>r = (a_log - b_log) * np.random.rand() + b_log
+# In the example the range would be from [-4, 0] because rand range [0,1)
+result = 10^r
+</code></pre></li>
+</ul>
+
+<p>For example, if we want to use the last method on exploring on the &ldquo;momentum beta&rdquo;:
+* Beta best range is from 0.9 to 0.999.
+* You should search for <code>1 - beta in range 0.001 to 0.1 (1 - 0.9 and 1 - 0.999)</code> and the use <code>a = 0.001 and b = 0.1</code>. Then:</p>
+
+<pre><code>a_log = -3
+b_log = -1
+r = (a_log - b_log) * np.random.rand() + b_log
+beta = 1 - 10^r   # because 1 - beta = 10^r
+</code></pre>
+
+<ul>
+<li>The reason why randomize $1-\beta$ instead of $\beta$ is because $\frac{1}{1-\beta}$ is too sensitive when $\beta$ approches to 1</li>
+</ul>
+
+<hr />
+
+<h3 id="pandas-vs-caviar">Pandas vs. Caviar</h3>
+
+<ol>
+<li>If you don&rsquo;t have much computational resources you can use the &ldquo;babysitting model&rdquo;. Like <strong>Pandas</strong>:
+
+<ul>
+<li>Day 0 you might initialize your parameter as random and then start training.</li>
+<li>Then you watch your learning curve gradually decrease over the day.</li>
+<li>And each day you nudge your parameters a little during training.</li>
+</ul></li>
+<li>If you have enough computational resources, you can run some models in parallel and at the end of the day(s) you check the results. Like <strong>Caviar</strong>.</li>
+</ol>
+
+<hr />
+
+<h3 id="normalizing-activations-in-a-network">Normalizing Activations In A Network</h3>
+
+<p><strong>Batch normalization</strong> speeds up learning.</p>
+
+<p>For any hidden layer, we can normalize $A^{[L]}$ to train $W^{[L]} \ b^{[L]}$ faster. <strong>In practice, normalizing $Z^{[L]}$ before activation</strong>.</p>
+
+<p>Algorithm:</p>
+
+<p>$$
+\begin{align}
+    &amp; \mu = \frac{1}{m} \sum_{i}^m Z{[i]} \newline
+    &amp; \sigma^2 = \frac{1}{m} \sum_{i}^m (Z^{[i]} - \mu)^2 \newline
+    &amp; Z_{norm}^{[i]} = \frac{Z^{[i]} - \mu}{\sqrt{\sigma^2 + \epsilon}} \newline
+    &amp; \tilde{Z}^{[i]} = \gamma Z_{norm}^{[i]} + \beta
+\end{align}
+$$</p>
+
+<p>Notes:</p>
+
+<ul>
+<li>$Z_{norm}^{[i]} $ forces the inputs to a distribution with zero mean and variance of 1.</li>
+<li>$\tilde{Z}^{[i]}$ is to make inputs belong to other distribution (with other mean and variance)</li>
+<li>$\gamma$ and $\beta$ are learnable parameters, making the NN learn the distribution of the outputs.</li>
+<li>If $\gamma = \sqrt{\sigma^2 + \epsilon}$ and $\beta = \mu$ then $\tilde{Z}^{[i]} = Z_{norm}^{[i]}$</li>
+</ul>
+
+<h4 id="why-does-batch-normalization-work">Why does Batch normalization work?</h4>
+
+<ul>
+<li>The first reason is the same reason as why we normalize X.</li>
+<li>The second reason is that batch normalization reduces the problem of input values changing (shifting).</li>
+<li>Batch normalization does some regularization:
+
+<ul>
+<li>Each mini batch is scaled by the mean/variance computed of that mini-batch.</li>
+<li>This adds some noise to the values Z[l] within that mini batch. So similar to dropout it adds some noise to each hidden layer&rsquo;s activations.</li>
+<li>This has a slight regularization effect.</li>
+<li>Using bigger size of the mini-batch you are reducing noise and therefore regularization effect.</li>
+<li>Don&rsquo;t rely on batch normalization as a regularization. It&rsquo;s intended for normalization of hidden units, activations and therefore speeding up learning. For regularization use other regularization techniques (L2 or dropout).</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h3 id="softmax-regression">Softmax Regression</h3>
+
+<p>Used for multiclass classification/regression.</p>
+
+<p>It is a function that takes as input a vector of K real numbers, and normalizes it into a probability distribution consisting of K probabilities.</p>
+
+<p>We activate softmax regression activation function in the last layer instead of the sigmoid activation.</p>
+
+<p>$$
+S_i = \frac{e^{Z_i^{[L]}}}{\sum_{i=i}^K e^{Z_j^{[L]}}} \text{ for } i = 1, \ &hellip;, \ K
+$$</p>
+
+<p><img src="/img/2019/07/softmax_layer.png" alt="Softmax Layer" /></p>
+
+<h4 id="training-a-softmax-classifier">Training a Softmax classifier</h4>
+
+<p>$$
+\begin{align}
+    &amp; L(y, \hat{y}) = - \sum_{j=1}^K y_j \log{\hat{y_j}} \newline
+    \newline
+    &amp; J(W, b) = - \frac{1}{m} \sum_{i=1}^m L(y_i, \hat{y}_i) \newline
+    \newline
+    &amp; dZ^{[L]} = \hat{Y} - Y \newline
+    \newline
+    &amp; DS_i = \hat{Y} (1 - \hat{Y})
+\end{align}
+$$</p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+  
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "guocheng-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+</article>
+<div class="pagination">
+  
+    <a href="/blog/coursera/ml/ml-stanford-6/" class="button big previous"><i class="fas fa-angle-left"></i> Week 6 - Machine Learning</a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  <section id="recent-posts">
+    <header>
+      <h1>Recent posts</h1>
+    </header>
+    
+    <article class="mini-post">
+      <section>
+        
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
+        <time class="published" datetime="">July 7, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 6, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-5/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 3, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-4/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 1, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-3/" class="image featured">
+  <img src="/img/2019/06/ml_stanford_3.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-3/">Week 3 - Machine Learning</a></h1>
+        <time class="published" datetime="">June 29, 2019</time>
+      </header>
+    </article>
+    
+    
+      <a href="/blog/" class="button">See more</a>
+    
+  </section>
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/coursera-notes/">coursera-notes<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/project-overview/">project-overview<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/project-report/">project-report<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  <section id="mini-bio">
+    <header>
+      <h1>About</h1>
+    </header>
+    <p>Passion in core network, ML, and software engineer. Love food, hiking, and snow skiing.</p>
+    <footer>
+      <a href="/about" class="button">Learn More</a>
+    </footer>
+  </section>
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="social-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019
+      
+        Guocheng&#39;s Space
+      
+    .
+    Powered by <a href="//gohugo.io" target="_blank" rel="noopener">Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+  
+    <script src="/js/code_snippet.js"></script>
+  
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92477600-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>

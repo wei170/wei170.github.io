@@ -16,11 +16,26 @@
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
+      processEscapes: true,
+      TEX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
+     }
     },
     "HTML-CSS": { fonts: ["TeX"] }
   });
 </script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
   <meta name="generator" content="Hugo 0.55.6" />
   
 <meta itemprop="name" content="Coursera Notes">
@@ -32,7 +47,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wei170.github.io/categories/coursera-notes/" />
 
-<meta property="og:updated_time" content="2019-07-03T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2019-07-07T00:00:00&#43;00:00"/>
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Coursera Notes"/>
@@ -56,10 +71,6 @@
   
     
       <link rel="stylesheet" href="/css/main.css">
-    
-  
-    
-      <link rel="stylesheet" href="/css/mathjax-style.css">
     
   
     
@@ -240,6 +251,128 @@
   <header>
   <div class="title">
     
+        <h2><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h2>
+    
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-07-07 00:00:00 &#43;0000 UTC">
+      July 7, 2019
+    </time>
+    <span class="author">Guocheng Wei</span>
+    
+        <p>11 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p>What we learn in <a href="/blog/coursera/ml/ml-stanford-3/#regularization">Week 3</a> is <strong>L2 Regularization</strong>.</p>
+  <footer>
+    <a href="/blog/coursera/ml/improve-dnn/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+            <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h2>
+    
+    
+        <p>Model Selection, ML Diagnostic Method, DNN Diagnostic Method, Error Metrics for Skewed Classes, Vanishing / Exploding Gradient</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-07-06 00:00:00 &#43;0000 UTC">
+      July 6, 2019
+    </time>
+    <span class="author">Guocheng Wei</span>
+    
+        <p>4 minute read</p>
+    
+  </div>
+</header>
+
+  
+<a href="/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+</a>
+
+
+  
+  <p>Errors in your predictions can be troubleshooted by:</p>
+  <footer>
+    <a href="/blog/coursera/ml/ml-stanford-6/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+            <article class="post">
+  <header>
+  <div class="title">
+    
         <h2><a href="/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h2>
     
     
@@ -264,137 +397,13 @@
 
 
   
-  <p>Some notations:</p>
+  <p>$$
+\begin{gather}
+  J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2
+\end{gather}
+$$</p>
   <footer>
     <a href="/blog/coursera/ml/ml-stanford-5/" class="button big">Read more</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    
-    
-      <li class="tags">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
-          
-        </ul>
-      </li>
-    
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h2>
-    
-    
-        <p>Non-Linear Hypotheses, Neural Network Model, Multiclass Classification</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-07-01 00:00:00 &#43;0000 UTC">
-      July 1, 2019
-    </time>
-    <span class="author">Guocheng Wei</span>
-    
-        <p>5 minute read</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/coursera/ml/ml-stanford-4/" class="image featured">
-  <img src="/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
-</a>
-
-
-  
-  <p>If create a hypothesis with r polynominal terms from $n$ features, then there will be $\frac{(n+r-1)!}{r!(n-1)!}$. For quadratic terms, the time complexity is $O(n^{2}/2)$. Not pratical to compute.</p>
-  <footer>
-    <a href="/blog/coursera/ml/ml-stanford-4/" class="button big">Read more</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    
-    
-      <li class="tags">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
-          
-        </ul>
-      </li>
-    
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/coursera/ml/ml-stanford-3/">Week 3 - Machine Learning</a></h2>
-    
-    
-        <p>Classification, Representation, Logistic Regression Model, Multiclass Classification</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-06-29 00:00:00 &#43;0000 UTC">
-      June 29, 2019
-    </time>
-    <span class="author">Guocheng Wei</span>
-    
-        <p>8 minute read</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/coursera/ml/ml-stanford-3/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_3.png" alt="ml stanford thumbnail">
-</a>
-
-
-  
-  <p>Now we are switching from regression problems to classification problems. Don&rsquo;t be confused by the name &ldquo;Logistic Regression&rdquo;; it is named that way for historical reasons and is actually an approach to classification problems, <strong>not regression problems</strong>.</p>
-  <footer>
-    <a href="/blog/coursera/ml/ml-stanford-3/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -448,6 +457,32 @@
     <article class="mini-post">
       <section>
         
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
+        <time class="published" datetime="">July 7, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
+<a href="/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+</a>
+
+
+      </section>
+      <header>
+        <h1><a href="/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
+        <time class="published" datetime="">July 6, 2019</time>
+      </header>
+    </article>
+    
+    <article class="mini-post">
+      <section>
+        
 <a href="/blog/coursera/ml/ml-stanford-5/" class="image featured">
   <img src="/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
 </a>
@@ -490,36 +525,6 @@
       </header>
     </article>
     
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-2/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_2.png" alt="ml stanford thumbnail">
-</a>
-
-
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-2/">Week 2 - Machine Learning</a></h1>
-        <time class="published" datetime="">June 28, 2019</time>
-      </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-1/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_1.png" alt="ml stanford thumbnail">
-</a>
-
-
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-1/">Week 1 - Machine Learning</a></h1>
-        <time class="published" datetime="">June 27, 2019</time>
-      </header>
-    </article>
-    
     
       <a href="/blog/" class="button">See more</a>
     
@@ -538,7 +543,7 @@
           
           <li>
             
-              <a href="/categories/coursera-notes/">coursera-notes<span class="count">5</span></a>
+              <a href="/categories/coursera-notes/">coursera-notes<span class="count">7</span></a>
             
           
           <li>

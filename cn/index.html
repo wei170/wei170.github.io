@@ -16,11 +16,26 @@
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
+      processEscapes: true,
+      TEX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
+     }
     },
     "HTML-CSS": { fonts: ["TeX"] }
   });
 </script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
   <meta name="generator" content="Hugo 0.55.6" />
   
 <meta itemprop="name" content="GW的博客">
@@ -55,10 +70,6 @@
   
     
       <link rel="stylesheet" href="/css/main.css">
-    
-  
-    
-      <link rel="stylesheet" href="/css/mathjax-style.css">
     
   
     
