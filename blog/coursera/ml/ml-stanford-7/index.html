@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Week 7 - Machine Learning - Guocheng&#39;s Space</title>
+<meta name="description" content="SVM Algorithm">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      TEX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
+     }
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
+  <script type="application/ld+json">
+	{
+		"@context" : "http://schema.org",
+		"@type" : "BlogPosting",
+		"mainEntityOfPage": {
+			 "@type": "WebPage",
+			 "@id": "https:\/\/wei170.github.io\/"
+		},
+		"articleSection" : "blog",
+		"name" : "Week 7 - Machine Learning",
+		"headline" : "Week 7 - Machine Learning",
+		"description" : "SVM Algorithm",
+		"inLanguage" : "en-US",
+		"author" : "",
+		"creator" : "",
+		"publisher": "",
+		"accountablePerson" : "",
+		"copyrightHolder" : "",
+		"copyrightYear" : "2019",
+		"datePublished": "2019-07-22 00:00:00 \x2b0000 UTC",
+		"dateModified" : "2019-07-22 00:00:00 \x2b0000 UTC",
+		"url" : "https:\/\/wei170.github.io\/blog\/coursera\/ml\/ml-stanford-7\/",
+		"wordCount" : "0",
+		"keywords" : [ "Machine Learning","Blog" ]
+	}
+</script>
+  <meta name="generator" content="Hugo 0.55.6" />
+  
+<meta itemprop="name" content="Week 7 - Machine Learning">
+<meta itemprop="description" content="SVM Algorithm">
+
+
+<meta itemprop="datePublished" content="2019-07-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="Machine Learning," />
+
+  <meta property="og:title" content="Week 7 - Machine Learning" />
+<meta property="og:description" content="SVM Algorithm" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/" />
+<meta property="article:published_time" content="2019-07-22T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-22T00:00:00&#43;00:00"/>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week 7 - Machine Learning"/>
+<meta name="twitter:description" content="SVM Algorithm"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+  
+    
+      <link rel="stylesheet" href="https://wei170.github.io/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="https://wei170.github.io/css/main.min.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/add-on.css">
+    
+  
+    
+      <link rel="stylesheet" href="https://wei170.github.io/css/main.css">
+    
+  
+    
+      <link rel="stylesheet" href="https://wei170.github.io/css/code_snippet.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://wei170.github.io/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="https://wei170.github.io/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+      
+        <a href="https://wei170.github.io/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+      
+        <a href="https://wei170.github.io/blog/" class="link"><i class="far fa-newspaper">&nbsp;</i>Blog</a>
+      
+        <a href="https://wei170.github.io/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Categories</a>
+      
+        <a href="https://wei170.github.io/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="active"><span class="flag-icon flag-icon-en" alt="en"></span></a>
+  
+    
+      
+    
+      
+        <a href="https://wei170.github.io/cn" lang="cn" class="no-lang"><span class="flag-icon flag-icon-cn" alt="cn"></span></a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Week%207%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;title=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;title=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;description=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="https://wei170.github.io/"><img src="https://wei170.github.io/img/main/avatar.jpg" class="circle" width="80" alt="avatar" /></a>
+  <header>
+    <h1>Guocheng Wei</h1>
+  </header>
+  <main>
+    <p>I will share my side projects, paper readings, trending news, and my life here with you.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/">Week 7 - Machine Learning</a></h2>
+    
+    
+        <p>SVM Algorithm</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-07-22 00:00:00 &#43;0000 UTC">
+      July 22, 2019
+    </time>
+    <span class="author">Guocheng Wei</span>
+    
+        <p>0 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Week%207%20-%20Machine%20Learning&amp;url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;title=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;title=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f&amp;description=Week%207%20-%20Machine%20Learning" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fml-stanford-7%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_7.png" alt="ml stanford thumbnail">
+</a>
+
+
+  <div class="content">
+    
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/categories/coursera-notes">Coursera Notes</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://wei170.github.io/tags/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+  
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "guocheng-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+</article>
+<div class="pagination">
+  
+    <a href="https://wei170.github.io/blog/coursera/ml/improve-dnn/" class="button big previous"><i class="fas fa-angle-left"></i> Additional Note for Improving Deep Neural Network</a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_7.png" alt="ml stanford thumbnail">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/">Week 7 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 22, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
+          <time class="published" datetime="">July 7, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 6, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-5/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 3, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-4/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 1, 2019</time>
+        </header>
+      </article>
+      
+      
+        <a href="https://wei170.github.io/blog/" class="button">See more</a>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="https://wei170.github.io/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="https://wei170.github.io/categories/coursera-notes/">coursera-notes<span class="count">8</span></a>
+            
+          
+          <li>
+            
+              Uncategorized<span class="count">1</span>
+            
+          
+          <li>
+            
+              <a href="https://wei170.github.io/categories/project-overview/">project-overview<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="https://wei170.github.io/categories/project-report/">project-report<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  <section id="mini-bio">
+    <header>
+      <h1>About</h1>
+    </header>
+    <p>Passion in core network, ML, and software engineer. Love food, hiking, and snow skiing.</p>
+    <footer>
+      <a href="https://wei170.github.io/about" class="button">Learn More</a>
+    </footer>
+  </section>
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019
+      
+        Guocheng&#39;s Space
+      
+    .
+    Powered by <a href="//gohugo.io" target="_blank" rel="noopener">Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=https://wei170.github.io/js/util.js></script>
+  <script src=https://wei170.github.io/js/main.js></script>
+  <script src=https://wei170.github.io/js/add-on.js></script>
+  
+
+  
+    <script src="https://wei170.github.io/js/code_snippet.js"></script>
+  
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92477600-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>

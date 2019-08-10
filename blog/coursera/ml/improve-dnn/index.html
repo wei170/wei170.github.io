@@ -36,6 +36,32 @@
   }
 </style>
 
+  <script type="application/ld+json">
+	{
+		"@context" : "http://schema.org",
+		"@type" : "BlogPosting",
+		"mainEntityOfPage": {
+			 "@type": "WebPage",
+			 "@id": "https:\/\/wei170.github.io\/"
+		},
+		"articleSection" : "blog",
+		"name" : "Additional Note for Improving Deep Neural Network",
+		"headline" : "Additional Note for Improving Deep Neural Network",
+		"description" : "Practical aspects of Deep Learning Regularization What we learn in Week 3 is L2 Regularization.\nL1 Regularization is without the square of the $\\theta$.\nImplementation tip: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases monotonically after every elevation of gradient descent with regularization.",
+		"inLanguage" : "en-US",
+		"author" : "",
+		"creator" : "",
+		"publisher": "",
+		"accountablePerson" : "",
+		"copyrightHolder" : "",
+		"copyrightYear" : "2019",
+		"datePublished": "2019-07-07 00:00:00 \x2b0000 UTC",
+		"dateModified" : "2019-07-07 00:00:00 \x2b0000 UTC",
+		"url" : "https:\/\/wei170.github.io\/blog\/coursera\/ml\/improve-dnn\/",
+		"wordCount" : "2214",
+		"keywords" : [ "Machine Learning","Blog" ]
+	}
+</script>
   <meta name="generator" content="Hugo 0.55.6" />
   
 <meta itemprop="name" content="Additional Note for Improving Deep Neural Network">
@@ -46,7 +72,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 
 <meta itemprop="datePublished" content="2019-07-07T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2202">
+<meta itemprop="wordCount" content="2214">
 
 
 
@@ -73,22 +99,22 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
   
     
-      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/normalize.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
-      <link rel="stylesheet" href="/css/main.min.css">
-      <link rel="stylesheet" href="/css/add-on.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/main.min.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/add-on.css">
     
   
     
-      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/main.css">
     
   
     
-      <link rel="stylesheet" href="/css/code_snippet.css">
+      <link rel="stylesheet" href="https://wei170.github.io/css/code_snippet.css">
     
   
   
@@ -102,7 +128,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 <header id="site-header">
   <nav id="site-nav">
     <h1 class="nav-title">
-      <a href="/">
+      <a href="https://wei170.github.io/">
         
           
             Blog
@@ -112,15 +138,15 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
     </h1>
     <menu id="site-nav-menu" class="flyout-menu">
       
-        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+        <a href="https://wei170.github.io/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
       
-        <a href="/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+        <a href="https://wei170.github.io/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
       
-        <a href="/blog/" class="link"><i class="far fa-newspaper">&nbsp;</i>Blog</a>
+        <a href="https://wei170.github.io/blog/" class="link"><i class="far fa-newspaper">&nbsp;</i>Blog</a>
       
-        <a href="/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Categories</a>
+        <a href="https://wei170.github.io/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Categories</a>
       
-        <a href="/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
+        <a href="https://wei170.github.io/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
       
       <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
       
@@ -139,7 +165,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
       
     
       
-        <a href="/cn" lang="cn" class="no-lang"><span class="flag-icon flag-icon-cn" alt="cn"></span></a>
+        <a href="https://wei170.github.io/cn" lang="cn" class="no-lang"><span class="flag-icon flag-icon-cn" alt="cn"></span></a>
       
     
   
@@ -187,7 +213,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email">
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -199,7 +225,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 
     <div id="wrapper">
       <section id="site-intro">
-  <a href="/"><img src="/img/main/avatar.jpg" class="circle" width="80" alt="avatar" /></a>
+  <a href="https://wei170.github.io/"><img src="https://wei170.github.io/img/main/avatar.jpg" class="circle" width="80" alt="avatar" /></a>
   <header>
     <h1>Guocheng Wei</h1>
   </header>
@@ -208,7 +234,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
   </main>
   
     <footer>
-      <ul class="social-icons">
+      <ul class="socnet-icons">
         
 
         <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
@@ -248,6 +274,8 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 
 
 
+
+
 <li><a href="mailto:guochengwei170@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
@@ -260,7 +288,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
   <header>
   <div class="title">
     
-        <h2><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h2>
+        <h2><a href="https://wei170.github.io/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h2>
     
     
 </div>
@@ -275,7 +303,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
   </div>
 </header>
 
-  <section id="social-share">
+  <section id="socnet-share">
     
 
 
@@ -315,7 +343,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email">
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fwei170.github.io%2fblog%2fcoursera%2fml%2fimprove-dnn%2f" target="_blank" class="share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -333,7 +361,7 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 
 <h3 id="regularization">Regularization</h3>
 
-<p>What we learn in <a href="/blog/coursera/ml/ml-stanford-3/#regularization">Week 3</a> is <strong>L2 Regularization</strong>.</p>
+<p>What we learn in <a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-3/#regularization">Week 3</a> is <strong>L2 Regularization</strong>.</p>
 
 <p><strong>L1 Regularization</strong> is without the square of the $\theta$.</p>
 
@@ -345,7 +373,28 @@ Implementation tip: if you implement gradient descent, one of the steps to debug
 
 <p>For reducing overfitting</p>
 
-<p><img src="/img/2019/07/dropout.jpg" alt="Dropout" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/dropout.jpg" data-caption="Dropout"><img src="https://wei170.github.io/img/2019/07/dropout.jpg"></a>
+    <div class="caption">Dropout</div>
+  </div>
+
+
 
 <p>Implementing Dropout (illustrate with l = 3, and keep-prob = 0.8):</p>
 
@@ -388,7 +437,28 @@ a3 /= keep-prob
 </ul></li>
 </ul>
 
-<p><img src="/img/2019/07/early_stoppping.png" alt="Early Stopping" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/early_stoppping.png" data-caption="Early Stopping"><img src="https://wei170.github.io/img/2019/07/early_stoppping.png"></a>
+    <div class="caption">Early Stopping</div>
+  </div>
+
+
 
 <hr />
 
@@ -459,7 +529,28 @@ with $\epsilon = 10^{-7}$ (|| - Euclidean vector norm):</p>
 	update_parameters(grads)
 </code></pre>
 
-<p><img src="/img/2019/07/mini-batch_gradient_descent.png" alt="mini-batch gradient descent" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/mini-batch_gradient_descent.png" data-caption="Mini-Batch Gradient Descent"><img src="https://wei170.github.io/img/2019/07/mini-batch_gradient_descent.png"></a>
+    <div class="caption">Mini-Batch Gradient Descent</div>
+  </div>
+
+
 
 <h4 id="mini-batch-size">Mini-batch size:</h4>
 
@@ -524,7 +615,28 @@ $$</p>
 <li>Decreasing $\beta$ will create more oscillation within the curve.</li>
 </ul>
 
-<p><img src="/img/2019/07/exponentially_weighted_average.png" alt="exponentially weighted average" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/exponentially_weighted_average.png" data-caption="Exponentially Weighted Average]"><img src="https://wei170.github.io/img/2019/07/exponentially_weighted_average.png"></a>
+    <div class="caption">Exponentially Weighted Average]</div>
+  </div>
+
+
 
 <h4 id="bias-correction-in-exponentially-weighted-averages">Bias correction in exponentially weighted averages</h4>
 
@@ -575,7 +687,28 @@ $$</p>
 <li>$\epsilon$ is used to ensure denominator is not zero</li>
 </ol>
 
-<p><img src="/img/2019/07/rmsprop.png" alt="Rmsprop" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/rmsprop.png" data-caption="RMSprop"><img src="https://wei170.github.io/img/2019/07/rmsprop.png"></a>
+    <div class="caption">RMSprop</div>
+  </div>
+
+
 
 <hr />
 
@@ -774,7 +907,28 @@ $$</p>
 S_i = \frac{e^{Z_i^{[L]}}}{\sum_{i=i}^K e^{Z_j^{[L]}}} \text{ for } i = 1, \ &hellip;, \ K
 $$</p>
 
-<p><img src="/img/2019/07/softmax_layer.png" alt="Softmax Layer" /></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Note Images" href="https://wei170.github.io/img/2019/07/softmax_layer.png" data-caption="Softmax Layer"><img src="https://wei170.github.io/img/2019/07/softmax_layer.png"></a>
+    <div class="caption">Softmax Layer</div>
+  </div>
+
+
 
 <h4 id="training-a-softmax-classifier">Training a Softmax classifier</h4>
 
@@ -852,100 +1006,104 @@ $$</p>
 </article>
 <div class="pagination">
   
-    <a href="/blog/coursera/ml/ml-stanford-6/" class="button big previous"><i class="fas fa-angle-left"></i> Week 6 - Machine Learning</a>
+    <a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-6/" class="button big previous"><i class="fas fa-angle-left"></i> Week 6 - Machine Learning</a>
   
+  
+    <a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/" class="button big next">Week 7 - Machine Learning <i class="fas fa-angle-right"></i></a>
   
 </div>
 
 
       </main>
       <section id="site-sidebar">
-  <section id="recent-posts">
-    <header>
-      <h1>Recent posts</h1>
-    </header>
-    
-    <article class="mini-post">
-      <section>
-        
-
-      </section>
+  
+    <section id="recent-posts">
       <header>
-        <h1><a href="/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
-        <time class="published" datetime="">July 7, 2019</time>
+        <h1>Recent posts</h1>
       </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-6/" class="image featured">
-  <img src="/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_7.png" alt="ml stanford thumbnail">
 </a>
 
 
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
-        <time class="published" datetime="">July 6, 2019</time>
-      </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-5/" class="image featured">
-  <img src="/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-7/">Week 7 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 22, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/improve-dnn/">Additional Note for Improving Deep Neural Network</a></h1>
+          <time class="published" datetime="">July 7, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-6/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_6.png" alt="ml stanford thumbnail">
 </a>
 
 
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h1>
-        <time class="published" datetime="">July 3, 2019</time>
-      </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-4/" class="image featured">
-  <img src="/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-6/">Week 6 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 6, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-5/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_5.png" alt="ml stanford thumbnail">
 </a>
 
 
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h1>
-        <time class="published" datetime="">July 1, 2019</time>
-      </header>
-    </article>
-    
-    <article class="mini-post">
-      <section>
-        
-<a href="/blog/coursera/ml/ml-stanford-3/" class="image featured">
-  <img src="/img/2019/06/ml_stanford_3.png" alt="ml stanford thumbnail">
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-5/">Week 5 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 3, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-4/" class="image featured">
+  <img src="https://wei170.github.io/img/2019/07/ml_stanford_4.png" alt="ml stanford thumbnail">
 </a>
 
 
-      </section>
-      <header>
-        <h1><a href="/blog/coursera/ml/ml-stanford-3/">Week 3 - Machine Learning</a></h1>
-        <time class="published" datetime="">June 29, 2019</time>
-      </header>
-    </article>
-    
-    
-      <a href="/blog/" class="button">See more</a>
-    
-  </section>
+        </section>
+        <header>
+          <h1><a href="https://wei170.github.io/blog/coursera/ml/ml-stanford-4/">Week 4 - Machine Learning</a></h1>
+          <time class="published" datetime="">July 1, 2019</time>
+        </header>
+      </article>
+      
+      
+        <a href="https://wei170.github.io/blog/" class="button">See more</a>
+      
+    </section>
+  
 
   
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">Categories</a></h1>
+          <h1><a href="https://wei170.github.io/categories">Categories</a></h1>
         </header>
         <ul>
           
@@ -954,17 +1112,22 @@ $$</p>
           
           <li>
             
-              <a href="/categories/coursera-notes/">coursera-notes<span class="count">7</span></a>
+              <a href="https://wei170.github.io/categories/coursera-notes/">coursera-notes<span class="count">8</span></a>
             
           
           <li>
             
-              <a href="/categories/project-overview/">project-overview<span class="count">1</span></a>
+              Uncategorized<span class="count">1</span>
             
           
           <li>
             
-              <a href="/categories/project-report/">project-report<span class="count">1</span></a>
+              <a href="https://wei170.github.io/categories/project-overview/">project-overview<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="https://wei170.github.io/categories/project-report/">project-report<span class="count">1</span></a>
             
           
           </li>
@@ -979,14 +1142,14 @@ $$</p>
     </header>
     <p>Passion in core network, ML, and software engineer. Love food, hiking, and snow skiing.</p>
     <footer>
-      <a href="/about" class="button">Learn More</a>
+      <a href="https://wei170.github.io/about" class="button">Learn More</a>
     </footer>
   </section>
 </section>
 
       <footer id="site-footer">
   
-      <ul class="social-icons">
+      <ul class="socnet-icons">
         
 
         <li><a href="//github.com/wei170" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
@@ -1002,6 +1165,8 @@ $$</p>
 
 
 <li><a href="//linkedin.com/in/wei170" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
 
 
 
@@ -1052,13 +1217,13 @@ $$</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
-  <script src=/js/util.js></script>
-  <script src=/js/main.js></script>
-  <script src=/js/add-on.js></script>
+  <script src=https://wei170.github.io/js/util.js></script>
+  <script src=https://wei170.github.io/js/main.js></script>
+  <script src=https://wei170.github.io/js/add-on.js></script>
   
 
   
-    <script src="/js/code_snippet.js"></script>
+    <script src="https://wei170.github.io/js/code_snippet.js"></script>
   
 
 

@@ -6,10 +6,19 @@
     <description>Recent content in Coursera Notes on Guocheng&#39;s Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wei170.github.io/categories/coursera-notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 7 - Machine Learning</title>
+      <link>https://wei170.github.io/blog/coursera/ml/ml-stanford-7/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wei170.github.io/blog/coursera/ml/ml-stanford-7/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Additional Note for Improving Deep Neural Network</title>

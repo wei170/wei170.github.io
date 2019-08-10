@@ -128,6 +128,7 @@ iframe,
 img,
 svg,
 video {
+    max-width: 100%;
     vertical-align: middle;
 }
 
@@ -1516,7 +1517,7 @@ textarea {
  /* Social Icons */
 
  #site-intro, #site-footer {
-   .social-icons {
+   .socnet-icons {
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
@@ -1533,7 +1534,7 @@ textarea {
    }
  }
 
- #social-share {
+ #socnet-share {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
